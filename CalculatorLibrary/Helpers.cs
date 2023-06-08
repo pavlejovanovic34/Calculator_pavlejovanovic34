@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.Text.RegularExpressions;
+using CalculatorLibrary.Models;
 
 namespace CalculatorLibrary
 {
     internal class Helpers
     {
+        internal static List<Calculator> resultsHistory = new List<Calculator> ();
+
         // number validation
         private static bool IsDouble(string number)
         {
@@ -56,6 +53,13 @@ namespace CalculatorLibrary
             }
 
             return option;
+        }
+
+        // list of results
+
+        internal static void AddToHistory(double result)
+        {
+            resultsHistory.Add(new Calculator(result));
         }
     }
 }
