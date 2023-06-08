@@ -1,7 +1,12 @@
-﻿internal class Program
+﻿using CalculatorLibrary;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Menu menu = new Menu();
+        menu.MainMenu();
+
+
     }
 }
