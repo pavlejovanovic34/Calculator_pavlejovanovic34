@@ -1,0 +1,40 @@
+1. Koriscenjem regularnih izraza proveri da li je korisnik ispravno uneo broj.
+
+Regex regex = new Regex(@"^[0-9]+$");
+        return regex.IsMatch(input);
+        
+      
+        This pattern ensures that the input consists of one or more digits (0-9) from the start (^) to the end ($) of the string. 
+        The IsMatch method of the regex object is then used to determine if the input matches the pattern.
+        
+        
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------        
+   
+2. Koriscenjem regularnih izraza proveri da li je korisnik ispravno uneo decimalni broj broj.
+
+ Regex regex = new Regex(@"^[+-]?\d+(\.\d+)?$");
+        return regex.IsMatch(input);
+        
+This pattern allows an optional sign at the start (^[+-]?), followed by one or more digits (\d+), and an optional decimal part ((\.\d+)?). 
+The IsMatch method of the regex object is then used to determine if the input matches the pattern.
+
+If the input is a valid double value, the program displays the message "The input is a valid double value." Otherwise, it displays "The input is not a valid double value."
+
+Keep in mind that this regular expression pattern allows for decimal numbers with or without a sign (e.g., +1.23, -4.56), but it doesn't handle exponential notation (e.g., 1.23e-4). 
+If you need to support exponential notation or have more specific requirements, you may need to adjust the regular expression pattern accordingly.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+
+3. regular expression that checks if the user had entered string without blank spaces
+
+Regex regex = new Regex(@"^\S+$");
+        return regex.IsMatch(input);
+The IsValidString method takes a string input and creates a regular expression object using the pattern ^\S+$. 
+This pattern asserts that the input must start (^) and end ($) with one or more non-whitespace characters (\S). 
+The \S represents any character that is not a whitespace character.
+
+The IsMatch method of the regex object is then used to determine if the input matches the pattern. 
+If the input is a valid string without any blank spaces, the program displays the message "The input is a valid string without blank spaces." 
+Otherwise, it displays "The input contains blank spaces or is empty."
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------  
