@@ -1,17 +1,27 @@
-﻿namespace CalculatorLibrary;
+﻿using static CalculatorLibrary.Helpers;
+using static CalculatorLibrary.CalculatorOperations;
+
+namespace CalculatorLibrary;
 
 public class Menu
 {
-    public void MainMenu()
+    public static void MainMenu() 
     {
-        Console.WriteLine("CALCULATOR");
-        Console.WriteLine("--------------------------------------------------\n");
+        bool continueCalculations = true;
+  
+        do
+        {
+            string option = OptionMenu();
 
-        double numberOne = Helpers.InputNumber();
-        
-        /* OPTION MENU */
-        double numberTwo = Helpers.InputNumber();
-
+            continueCalculations = OptionChoice(option, continueCalculations);
+            
+        }
+        while (continueCalculations != false);
+    }
+    
+    private static string OptionMenu()
+    {
+        Console.Clear();
         Console.WriteLine(@$"Choose an option: 
         Add - Addition
         Sub - Subtraction
@@ -30,77 +40,75 @@ public class Menu
         ");
 
         Console.Write("Your option: ");
-        string option = Helpers.ValidateOptionInput(Console.ReadLine());
+        return ValidateOptionInput(Console.ReadLine());
+    }
 
-        switch(option.ToLower())
+    private static bool OptionChoice(string option, bool continueCalculations)
+    {
+        switch (option.ToLower())
         {
             case "add":
-                Console.WriteLine("Addition");
-                break;
+                Addition();
+                return true;
 
             case "sub":
-                Console.WriteLine("Subtraction");
-                break;
+                Subtraction();
+                return true;
 
             case "multi":
-                Console.WriteLine("Multiplication");
-                break;
+                Multiplication();
+                return true;
 
             case "div":
-                Console.WriteLine("Division");
-                break;
-
+                Division();
+                return true;
+ 
             case "10x":
-                Console.WriteLine("10x");
-                break;
-
+                TimesTen();
+                return true;
+ 
             case "pow":
-                Console.WriteLine("Taking to power");
-                break;
+                Power();
+                return true;
 
             case "sqrt":
-                Console.WriteLine("Square root");
-                break;
+                SquareRoot();
+                Console.ReadKey();
+                return true;
 
             case "sin":
-                Console.WriteLine("Sinus");
-                break;
+                Sinus();
+                return true;
 
             case "cos":
-                Console.WriteLine("Cosinus");
-                break;
+                Cosinus();
+                return true;
 
             case "tan":
-                Console.WriteLine("Tangens");
-                break;
-
+                Tangens();
+                return true;
+ 
             case "ctan":
-                Console.WriteLine("Cotangens");
-                break;
+                Cotangens();
+                return true;
 
             case "h":
-                Console.WriteLine("History of calculations");
-                break;
-
+                PrintResultsHistory();
+                return true;
+ 
             case "cls":
-                Console.WriteLine("Clear the history");
-                break;
+                Clear();
+                return true;
 
             case "q":
-                Console.WriteLine("Quit the program");
-                break;
+                return false;
 
             default:
-                Console.WriteLine("invalid input");
-                break;
-        }
-
-        /* OPTION MENU */
-    }
-    /*
-            private double OptionMenu(double numberOne) 
-            {
+                Console.Clear();
+                Console.WriteLine("Invalid input. Try again\n Press any key to continue");
+                Console.ReadKey();
                 
-            }
-    */
+                return true;
+        }
+    }
 }
